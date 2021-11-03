@@ -1,46 +1,59 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faHeartbeat  } from '@fortawesome/free-solid-svg-icons'
 
+// border-radius: 10%;
 const BorderCircle = styled.View`
-    border-radius: 50%;
-    border-width: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+`
+// border-radius: 10%;
+const InternBorder = styled.View`
+    border-width: 0.5px;
     border-style: solid;
     border-color: #808080;
 `
 
-const ContainerCircleRed = styled.TouchableOpacity`
+const ContainerBtn = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 10em;
     height: 10em;
-	background-color: #ff0000;
-    border-radius: 50%;
-`
-
+	background-color: #F4F9E9;
+    `
+    // border-radius: 10%;
+// f5fffa
 const BtnText = styled.Text`
 	font-size: 20; 
-	color: #f5fffa;
+	color: #000;
     text-align: center;
 `
 
-type Props = { label: string;};
+type Props = { label: string; onPress: Function};
 
 const PanicButtonImage: React.FC<Props> = ({  
         children,
-        label
+        label,
+        onPress
     }) => { 
 
         return (
             <View>
 
                 <BorderCircle>
-                    <ContainerCircleRed>
+                    <ContainerBtn onPress={onPress}>
                         <BtnText>
+                            <InternBorder>
+                                <FontAwesomeIcon icon={ faHeartbeat } size={64} color={'red'}/>                            
+                            </InternBorder>
                             {children ?? label}
                         </BtnText>
-                    </ContainerCircleRed>
+                    </ContainerBtn>
                 </BorderCircle>
             </View>
 
