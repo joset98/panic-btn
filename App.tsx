@@ -35,7 +35,10 @@ export default function App() {
 			  );
 			console.log(result)
 			result === 'sent' && alert('mensaje enviado');
+			result === 'unknown' && alert('Resultado desconocido, no se ha enviado el mensaje');
+			result === 'cancelled' && alert('mensaje cancelado');
 		} else {
+			alert('No esta disponible dicha funcion');
 		// misfortune... there's no SMS available on this device
 		}
 
