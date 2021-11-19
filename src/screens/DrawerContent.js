@@ -18,12 +18,17 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { AuthContext } from '../contexts/authContext';
+import useAuthUser from '../hooks/useAuthUser';
 
 export function DrawerContent(props) {
 
+    // const {authUser} = useAuth();
+
     const paperTheme = useTheme();
 
-    const { signOut, toggleTheme } = React.useContext(AuthContext);
+    // const { signOut, toggleTheme } = React.useContext(AuthContext);
+    const { signOut, toggleTheme } = useAuthUser();
+
 
     return (
         <View style={{ flex: 1 }}>
@@ -41,8 +46,10 @@ export function DrawerContent(props) {
                                 size={50}
                             />
                             <View style={{ marginLeft: 15, flexDirection: 'column' }}>
+
                                 <Title style={styles.title}>John Doe</Title>
                                 <Caption style={styles.caption}>@j_doe</Caption>
+                                
                             </View>
                         </View>
 
@@ -85,7 +92,7 @@ export function DrawerContent(props) {
                             onPress={() => { props.navigation.navigate('Profile') }}
                         />
                         
-                        <DrawerItem
+                        {/* <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
                                     name="bookmark-outline"
@@ -93,9 +100,9 @@ export function DrawerContent(props) {
                                     size={size}
                                 />
                             )}
-                            label="Bookmarks"
+                            label="Emergencia"
                             onPress={() => { props.navigation.navigate('BookmarkScreen') }}
-                        />
+                        /> */}
                         
                         <DrawerItem
                             icon={({ color, size }) => (

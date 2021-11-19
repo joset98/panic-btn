@@ -13,6 +13,10 @@ const HomeScreen = ({ navigation }) => {
 			<StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} />
 			<Text style={{ color: colors.text }}>Home Screen</Text>
 			<Button
+				title="Go to action auth"
+				onPress={() => actionAuth()}
+			/>
+			<Button
 				title="Go to details screen"
 				onPress={() => navigation.navigate("Details")}
 			/>

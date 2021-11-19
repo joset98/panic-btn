@@ -17,10 +17,12 @@ import { useTheme } from 'react-native-paper';
 
 // contexts
 import { AuthContext } from '../contexts/authContext';
-
-import Users from '../models/users';
+import useAuthUser from '../hooks/useAuthUser';
 
 const SignInScreen = ({ navigation }) => {
+
+    const {signIn, isLoading} = useAuthUser();
+    console.log(isLoading)
 
     const [data, setData] = React.useState({
         username: '',
@@ -32,8 +34,6 @@ const SignInScreen = ({ navigation }) => {
     });
 
     const { colors } = useTheme();
-
-    const { signIn } = React.useContext(AuthContext);
 
     const textInputChange = (val) => {
         if (val.trim().length >= 4) {
@@ -92,9 +92,6 @@ const SignInScreen = ({ navigation }) => {
 
     const loginHandle = (username, password) => {
 
-        // const foundUser = Users.filter(item => {
-        //     return userName == item.username && password == item.password;
-        // });
         const foundUser = { email: username, password };
 
         if (data.username.length == 0 || data.password.length == 0) {

@@ -16,6 +16,7 @@ const DetailsStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
+	
 	<Tab.Navigator
 		initialRouteName="Home"
 		activeColor="#fff"
@@ -32,6 +33,7 @@ const MainTabScreen = () => (
 				),
 			}}
 		/>
+
 		<Tab.Screen
 			name="Notifications"
 			component={DetailsStackScreen}
@@ -43,6 +45,7 @@ const MainTabScreen = () => (
 				),
 			}}
 		/>
+
 		<Tab.Screen
 			name="Profile"
 			component={ProfileScreen}
@@ -54,6 +57,7 @@ const MainTabScreen = () => (
 				),
 			}}
 		/>
+
 		<Tab.Screen
 			name="Explore"
 			component={ExploreScreen}
@@ -65,7 +69,7 @@ const MainTabScreen = () => (
 				),
 			}}
 		/>
-
+		
 	</Tab.Navigator>
 );
 
