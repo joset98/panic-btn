@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import PanicButton from '../components/PanicButton/PanicButton';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -16,6 +18,12 @@ const HomeScreen = ({ navigation }) => {
 				title="Go to action auth"
 				onPress={() => alert('testing')}
 			/>
+			<PanicButton
+				icon={<Icon name="heartbeat" size={60} color="#900" />}	
+			>
+				Emergency Button	
+			</PanicButton>
+
 			<Button
 				title="Go to details screen"
 				onPress={() => navigation.navigate("Details")}

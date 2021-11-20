@@ -69,6 +69,7 @@ const getUser = async (authToken) => {
         }	
     );
     console.log('getuser with response')
+    console.log(response)
     
     if (response.status === 500){
         alert('Ha ocurrido un error en el servidor');

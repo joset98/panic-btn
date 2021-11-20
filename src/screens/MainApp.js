@@ -21,9 +21,8 @@ import useAuthUser from '../hooks/useAuthUser';
 const Drawer = createDrawerNavigator();
 
 const MainApp = ({ theme }) => {
-    // const [userToken, setUserToken] = React.useState(null); 
     const auther = useAuthUser();
-    const { token: authToken, getAuthUser, isLoading } = auther;
+    const { token: authToken, getAuthUser, isLoading, retriveStorageToken } = auther;
     console.log('auther')
     console.log(auther)
     console.log(authToken)
@@ -56,7 +55,7 @@ const MainApp = ({ theme }) => {
             try {
 
                 // userToken = await AsyncStorage.getItem('userToken');
-
+                await retriveStorageToken();
                 // if ( userToken )
                 await getAuthUser();
 

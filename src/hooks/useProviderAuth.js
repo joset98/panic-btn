@@ -18,6 +18,26 @@ export const useProviderAuth = () => {
 
     const currentTheme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
+    const retriveStorageToken = async() => {
+        try {
+            const userToken = await AsyncStorage.getItem('userToken');
+            console.log(`valid token ${userToken}`);
+            
+            if ( !userToken )
+                return ;
+
+            if( token && token === userToken){
+                return ;
+            }
+
+            setToken(userToken);
+
+        } catch (error) {
+            console.log(error)				
+        
+        }
+    };
+
     const getAuthUser = async () => {
 
         console.log('berfore getme in providerAuth')
@@ -102,6 +122,7 @@ export const useProviderAuth = () => {
         user,
         token,
         isLoading,
+        retriveStorageToken,
         getAuthUser,
         signIn,
         signOut,
