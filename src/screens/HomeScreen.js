@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
 			<Text style={{ color: colors.text }}>Home Screen</Text>
 			<Button
 				title="Go to action auth"
-				onPress={() => actionAuth()}
+				onPress={() => alert('testing')}
 			/>
 			<Button
 				title="Go to details screen"

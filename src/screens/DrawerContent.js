@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import {
     useTheme,
@@ -17,18 +17,16 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { AuthContext } from '../contexts/authContext';
 import useAuthUser from '../hooks/useAuthUser';
+import {ThemeContext} from '../contexts/themeContext';
 
 export function DrawerContent(props) {
 
-    // const {authUser} = useAuth();
-
     const paperTheme = useTheme();
 
-    // const { signOut, toggleTheme } = React.useContext(AuthContext);
-    const { signOut, toggleTheme } = useAuthUser();
-
+    const { signOut } = useAuthUser();
+    
+    const {toggleTheme} = useContext(ThemeContext);
 
     return (
         <View style={{ flex: 1 }}>
@@ -54,14 +52,17 @@ export function DrawerContent(props) {
                         </View>
 
                         <View style={styles.row}>
+
                             <View style={styles.section}>
                                 <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
                                 <Caption style={styles.caption}>Following</Caption>
                             </View>
+
                             <View style={styles.section}>
                                 <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
                                 <Caption style={styles.caption}>Followers</Caption>
                             </View>
+
                         </View>
 
                     </View>

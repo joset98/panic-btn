@@ -9,7 +9,7 @@ export const useProviderAuth = () => {
 
     const [user, setUser] = useState({});
 
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState(null);
 
     const [isLoading, setIsLoading] = useState(true);
     
@@ -23,13 +23,15 @@ export const useProviderAuth = () => {
         console.log('berfore getme in providerAuth')
         try {
             const userToken = await AsyncStorage.getItem('userToken');
-
-            if( !token && !userToken )
+            console.log(`token ${userToken}`);
+            if( !token && !userToken ){
+                setIsLoading(false);
                 return ;
+            }
             console.log('after getme')
 
             const authUser = await getUser(token);
-            console.log('response useauth')
+            console.log('setting useauth')
             console.log(authUser)				
             setUser(authUser)
         } catch (error) {
@@ -42,17 +44,19 @@ export const useProviderAuth = () => {
     const signIn = async ( user ) => {
         
         setIsLoading(true);
-        console.log('0login true')
+        console.log('useProviderAuth login true')
         try {
             console.log(user);
             const userToken = await login(user);
+            if (typeof userToken !== 'string')
+                throw 'user token lost'
             await AsyncStorage.setItem('userToken', userToken);
             setToken(userToken);
             alert('Acceso a Usuario exitoso');
 
         } catch (e) {
             console.log('error');
-            console.log(...e);
+            console.log(e);
         }
         setIsLoading(false);
 
