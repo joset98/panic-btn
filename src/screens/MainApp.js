@@ -55,6 +55,7 @@ const MainApp = ({ theme }) => {
             try {
 
                 // userToken = await AsyncStorage.getItem('userToken');
+                console.log('retriveStorageToken')
                 await retriveStorageToken();
                 // if ( userToken )
                 await getAuthUser();
@@ -64,7 +65,7 @@ const MainApp = ({ theme }) => {
             }
 
         }, 1000);
-    }, []);
+    }, [authToken]);
 
     if (isLoading) {
         return (

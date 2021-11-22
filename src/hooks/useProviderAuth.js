@@ -20,6 +20,8 @@ export const useProviderAuth = () => {
 
     const retriveStorageToken = async() => {
         try {
+            console.log('getting auth token in state')
+
             const userToken = await AsyncStorage.getItem('userToken');
             console.log(`valid token ${userToken}`);
             
