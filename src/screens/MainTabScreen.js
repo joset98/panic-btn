@@ -81,6 +81,7 @@ const HomeStackScreen = ({ navigation }) => (
 			backgroundColor: '#009387',
 		},
 		headerTintColor: '#fff',
+		// headerShown: false,
 		headerTitleStyle: {
 			fontWeight: 'bold'
 		}
@@ -105,6 +106,7 @@ const DetailsStackScreen = ({ navigation }) => (
 			backgroundColor: '#1f65ff',
 		},
 		headerTintColor: '#fff',
+		// headerShown: false,
 		headerTitleStyle: {
 			fontWeight: 'bold'
 		}

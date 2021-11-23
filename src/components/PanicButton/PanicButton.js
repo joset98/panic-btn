@@ -15,7 +15,6 @@ const PanicButton = ({
 
                     <TouchableOpacity style={styles.container} onPress={handlePress}>
                         <View style={styles.intern_border}>
-                            {/* <FontAwesomeIcon icon={ faHeartbeat } size={64} color={'red'}/>                             */}
                             {icon}
                         </View>
                         <View>
@@ -34,38 +33,38 @@ const PanicButton = ({
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F4F9E9',
-        width: 200,
-        height: 200,
-        borderRadius: 40,
+        width: 100,
+        height: 100,
+        borderRadius: 20,
     },
 
     intern_border:{
-        borderRadius: 45,
-        width: 90,
-        height: 90,
-        borderWidth: 0.5,
-        borderStyle: 'solid',
-        borderColor: '#808080',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center' 
+        justifyContent: 'center', 
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        borderWidth: 0.8,
+        borderStyle: 'solid',
+        borderColor: '#808080',
     },
 
     text_button: {
-        fontSize: 20,
+        fontSize: 10,
         color: '#000',
     },
 
     border_circle: {
         borderWidth: 1,
         borderStyle: 'solid',
-        width: 200,
-        height: 200,
-        borderRadius: 40,
+        width: 100,
+        height: 100,
+        borderRadius: 20,
    }
 });
 

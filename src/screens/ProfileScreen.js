@@ -15,10 +15,10 @@ import * as Animatable from 'react-native-animatable';
 import useAuthUser from '../hooks/useAuthUser';
 
 const initUser = {
-    phone:'',
+    number_phone:'',
     name:'',
     last_name:'',
-    email:'123',
+    email:'',
     address:'',
 }
 
@@ -30,13 +30,29 @@ const ProfileScreen = ({ navigation }) => {
 
     console.log(`currentDataUser: ${currentDataUser}`)
 
-    const textInputChange = (val) => {
-        console.log(val)
-        setCurrentDataUser({
-            ...currentDataUser,
-            email: val,
-        });
+    const textInputChange = (evt, inputName) => {
+        console.log(evt)
+        console.log(inputName)
+        
+        setCurrentDataUser(( prevState ) => ({
+            ...prevState,
+            [inputName]: evt, 
+            }
+        ));
     }
+    const textInputChange2 = (evt, key) => {
+        console.log(evt.target.value)
+        console.log(evt.nativeEvent)
+
+    };
+
+    const saveUserChanges = (evt) => {
+        console.log('evt')
+        console.log(evt)
+        console.log('change user')
+        console.log(currentDataUser)
+
+    };
 
     return (
 
@@ -59,12 +75,13 @@ const ProfileScreen = ({ navigation }) => {
 
                         <View style={styles.action}>
                             <TextInput
-                                defaultValue={currentDataUser.email || 'hola'}
+                                // defaultValue={currentDataUser.email}
+                                value={currentDataUser.email}
                                 placeholder="Email"
-                                // value={currentDataUser.email || 'dsaÇ'}
                                 style={styles.textInput}
+                                keyboardType="email-address"
                                 autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
+                                onChangeText={(evt) => textInputChange( evt, 'email')}
                             />
 
                         </View>
@@ -76,9 +93,10 @@ const ProfileScreen = ({ navigation }) => {
                         <View style={styles.action}>
                             <TextInput
                                 placeholder="Nombre"
+                                value={currentDataUser.name}
                                 style={styles.textInput}
                                 autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
+                                onChangeText={(evt) => textInputChange( evt, 'name')}
                             />
 
                         </View>
@@ -90,9 +108,10 @@ const ProfileScreen = ({ navigation }) => {
                         <View style={styles.action}>
                             <TextInput
                                 placeholder="Apellido"
+                                value={currentDataUser.last_name}
                                 style={styles.textInput}
                                 autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
+                                onChangeText={(evt) => textInputChange( evt, 'last_name')}
                             />
 
                         </View>
@@ -105,9 +124,13 @@ const ProfileScreen = ({ navigation }) => {
                         <View style={styles.action}>
                             <TextInput
                                 placeholder="ejm: 04245637893"
+                                value={currentDataUser.phone}
                                 style={styles.textInput}
                                 autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
+                                returnKeyType="done"
+                                keyboardType="phone-pad"
+                                onChangeText={(evt) => textInputChange( evt, 'phone')}
+                                // onChange={ textInputChange2}
                             />
 
                         </View>
@@ -119,9 +142,10 @@ const ProfileScreen = ({ navigation }) => {
                         <View style={styles.action}>
                             <TextInput
                                 placeholder="Direccion de residencia"
+                                value={currentDataUser.address}
                                 style={styles.textInput}
                                 autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
+                                onChangeText={(evt) => textInputChange( evt, 'address')}
                             />
 
                         </View>
@@ -130,7 +154,7 @@ const ProfileScreen = ({ navigation }) => {
                     <View style={styles.button}>
 
                         <TouchableOpacity
-                            onPress={() => navigation.goBack()}
+                            onPress={saveUserChanges}
                             style={[styles.signIn, styles.textSignOutline]}
                         >
                             <Text style={[styles.textSign, {
